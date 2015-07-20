@@ -39,6 +39,7 @@ public class MainActivity extends FragmentActivity implements
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
+
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -46,9 +47,12 @@ public class MainActivity extends FragmentActivity implements
 
 		// Añadiendo Tabs
 		for (String tab_name : tabs) {
-			actionBar.addTab(actionBar.newTab().setText(tab_name)
-					.setTabListener(this));
+			//actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
 		}
+		for (int i = 0; i < mAdapter.getCount(); i++) {
+			actionBar.addTab(actionBar.newTab().setIcon(mAdapter.getIcon(i)).setTabListener(this));
+		}
+		
 		/**
 		 * on swiping viewpager hacer respectiva tab seleccionada
 		 * */
